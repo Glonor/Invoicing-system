@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  billed: false
+  start: 2017-11-14 12:32:55
+  end: 2017-11-14 12:32:55
+  client: one
+
+two:
+  title: MyString
+  description: MyText
+  billed: false
+  start: 2017-11-14 12:32:55
+  end: 2017-11-14 12:32:55
+  client: two
