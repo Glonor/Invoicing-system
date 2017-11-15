@@ -3,11 +3,19 @@
 one:
   first_name: MyString
   last_name: MyString
-  email: MyString
+  email: MyString@example.com
   user: michael
 
 two:
   first_name: MyString
   last_name: MyString
-  email: MyString
+  email: MyString@example.com
   user: jacob
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  first_name:  <%= "User #{n}" %>
+  last_name: <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  user: michael
+<% end %>
