@@ -1,31 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Clients</h1>
-
-<table>
+<div class="table-header">
+  <h5>Clients</h5>
+  <div class="actions" data-turbolinks="false"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
+</div>
+<table class="table" id="dttb">
   <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th colspan="1"></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @clients.each do |client| %>
-      <tr>
-        <td><%= client.first_name %></td>
-        <td><%= client.last_name %></td>
-        <td><%= client.email %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= client %></td>
+      <td><%= client.email %></td>
+      <td class="right-align">
+        <div class="btn-group">
+          <button class="btn bmd-btn-fab bmd-btn-fab-sm dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <div class="dropdown-menu  dropdown-menu-left" aria-labelledby="ex3">
+            <%= link_to 'Show', client, class: "dropdown-item", method: :get %>
+            <%= link_to 'Edit', edit_client_path(client), class: "dropdown-item", method: :get %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Client', new_client_path %>

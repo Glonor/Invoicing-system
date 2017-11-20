@@ -1,19 +1,33 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
-
-<%= will_paginate %>
-
-<ul class="users">
+<div class="table-header">
+  <h5>Users</h5>
+  <div class="actions" data-turbolinks="false"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
+</div>
+<table class="table" id="dttb">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th colspan="1"></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-    <li>
-      <%= gravatar_for user, size: 50 %>
-      <%= link_to user.first_name + user.last_name, user %>
-      <% if current_user.admin? && !current_user?(user) %>
-        | <%= link_to "delete", user, method: :delete,
-                      data: { confirm: "You sure?" } %>
-      <% end %>
-    </li>
+    <tr>
+      <td><%= user%></td>
+      <td><%= user.email %></td>
+      <td class="right-align">
+        <% if current_user.admin? && !current_user?(user) %>
+          <div class="btn-group">
+            <button class="btn bmd-btn-fab bmd-btn-fab-sm dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <div class="dropdown-menu  dropdown-menu-left" aria-labelledby="ex3">
+              <%= link_to "Delete", user, method: :delete, data: { confirm: "You sure?" }, class: "dropdown-item" %>
+            </div>
+          </div>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</ul>
-
-<%= will_paginate %>
+  </tbody>
+</table>

@@ -35,4 +35,9 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def current_class?(test_path)
+    return 'active' if request.path == test_path
+    ''
+  end
 end

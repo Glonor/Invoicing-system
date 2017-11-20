@@ -9,7 +9,18 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require jquery
+//= require popper
+//= require waves
+//= require bootstrap-material-design
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    $('body').bootstrapMaterialDesign({});
+
+    Waves.attach('.waves-start', ['waves-block']);
+    Waves.init();
+});
+

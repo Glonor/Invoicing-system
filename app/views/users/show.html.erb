@@ -1,14 +1,11 @@
-<% provide(:title, @user.first_name + @user.last_name) %>
-<li>
-  <%= gravatar_for @user %>
-  <%= @user.first_name %> <%= @user.last_name %>
-</li>
-<div class="col-md-8">
-  <% if @user.clients.any? %>
-    <h3>Clients (<%= @user.clients.count %>)</h3>
-    <ol class="clients">
-      <%= render @clients %>
-    </ol>
-    <%= will_paginate @clients %>
-  <% end %>
+<div class="card-body ">
+  <div class="col-md-8">
+    <% if @user.clients.any? %>
+      <h3>Clients (<%= @user.clients.count %>)</h3>
+      <ol class="clients">
+        <%= render @clients %>
+      </ol>
+      <%= will_paginate @clients %>
+    <% end %>
+  </div>
 </div>

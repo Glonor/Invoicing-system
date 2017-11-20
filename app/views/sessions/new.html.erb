@@ -1,15 +1,14 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
-
-<%= form_for(:session, url: login_path) do |f| %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control' %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %>
-
-  <%= f.submit "Log in", class: "btn btn-primary" %>
-<% end %>
-
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<div class="container" id="signin">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>", style="width: 380px; margin: 1em auto;"><h4 class="alert-heading"><%= message %></h4></div>
+  <% end %>
+  <%= bootstrap_form_for(:session, url: login_path, :html => {:class => 'form form-signin'}) do |f| %>
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <%= f.email_field :email %>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <%= f.password_field :password%>
+    <button class= "btn btn-raised btn-primary btn-lg btn-block" id="btn-submit" type="submit">Sign in</button>
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <% end %>
+</div>

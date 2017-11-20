@@ -7,4 +7,12 @@ class Client < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
             format: { with: VALID_EMAIL_REGEX }
   validates :user_id, presence: true
+
+  def fullname
+    "#{first_name} #{last_name}"
+  end
+
+  def to_s
+    fullname
+  end
 end
