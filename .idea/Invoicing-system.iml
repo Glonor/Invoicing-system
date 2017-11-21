@@ -52,6 +52,7 @@
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faker (v1.8.4, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.18, Remote: ruby-2.3.1-p112) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="fullcalendar.io-rails (v3.6.2, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.1, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.9.1, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.7.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
@@ -59,11 +60,11 @@
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.1.5, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.1.1, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="materialize-sass (v0.100.2, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="method_source (v0.9.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.0.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_portile2 (v2.3.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.10.3, Remote: ruby-2.3.1-p112) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="momentjs-rails (v2.17.1, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.12.2, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.1.0, Remote: ruby-2.3.1-p112) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.8.1, Remote: ruby-2.3.1-p112) [gem]" level="application" />

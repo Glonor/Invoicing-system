@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
+  has_many :events, dependent: :destroy
   belongs_to :user
   before_save { email.downcase! }
   validates :first_name, presence: true, length: { maximum: 50 }

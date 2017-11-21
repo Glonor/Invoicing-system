@@ -70,8 +70,14 @@ GEM
     faker (1.8.4)
       i18n (~> 0.5)
     ffi (1.9.18)
+    fullcalendar.io-rails (3.6.2)
+      jquery-rails (>= 3.1.0, < 5.0)
+      momentjs-rails (~> 2.15)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    glyphicons-rails (0.1.2)
+      sass (~> 3.3)
+      sass-rails
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -94,6 +100,8 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.2)
     nio4r (2.1.0)
     nokogiri (1.8.1)
@@ -149,7 +157,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scrollbar-rails (1.0.0)
     selenium-webdriver (3.7.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
@@ -200,16 +207,18 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   faker
+  fullcalendar.io-rails
+  glyphicons-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  momentjs-rails
   popper_js (~> 1.12.3)
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-assets-bootstrap-material-design (~> 4.0.0.beta.4)!
   rails-controller-testing
   sass-rails (~> 5.0)
-  scrollbar-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)

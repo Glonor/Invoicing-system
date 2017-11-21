@@ -30,5 +30,5 @@
   <%= @event.client %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Destroy', client_event_path(@client, @event), method: :delete, data: { confirm: 'Are you sure?' } %>  |
+<%= link_to 'Back', @client %>

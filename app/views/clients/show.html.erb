@@ -1,19 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @client.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @client.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
-
+<div class="card">
+<div class="card-body ">
+  <div class="row ">
+    <div class="col-md-3 mb-3">
+      <%= @client %>
+    </div>
+    <div class=col-md3 mb-3">
+    <%= @client.email %>
+  </div>
+</div>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+
+<script type="text/javascript">
+    var client_id = <%= params[:id] %>;
+    var url = '/clients/' + client_id + '/events.json';
+</script>
+<div id="calendar"></div>
+</div>
+</div>
