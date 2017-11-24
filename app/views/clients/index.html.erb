@@ -1,7 +1,11 @@
 <div class="card material-table">
 <div class="table-header">
   <h5>Clients</h5>
-  <div class="actions" data-turbolinks="false"><a class="search-toggle waves-effect btn-flat nopadding" href="#"><i class="material-icons">search</i></a></div>
+  <div class="actions" data-turbolinks="false">
+    <%= link_to new_client_path, class:"btn bmd-btn-icon" do %>
+      <i class="material-icons">person_add</i>
+      <% end %>
+  </div>
 </div>
 <table class="table" id="dttb">
   <thead>
@@ -18,12 +22,12 @@
       <td><%= client.email %></td>
       <td class="right-align">
         <div class="btn-group">
-          <button class="btn bmd-btn-fab bmd-btn-fab-sm dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">more_vert</i>
           </button>
           <div class="dropdown-menu  dropdown-menu-left" aria-labelledby="ex3">
-            <%= link_to 'Show', client, class: "dropdown-item", method: :get %>
-            <%= link_to 'Edit', edit_client_path(client), class: "dropdown-item", method: :get %>
+            <%= link_to 'Show', client, class: "dropdown-item" %>
+            <%= link_to 'Edit', edit_client_path(client), class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
           </div>

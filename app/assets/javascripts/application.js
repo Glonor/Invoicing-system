@@ -20,10 +20,26 @@
 //= require moment
 //= require fullcalendar
 
-function eventCalendar() {
-    return $('#calendar').fullCalendar({
-        height: 400,
+
+function clearCalendar() {
+    $('#calendar').fullCalendar('delete'); // In case delete doesn't work.
+    $('#calendar').html('');
+};
+
+
+$(document).on('turbolinks:load', function() {
+    $('body').bootstrapMaterialDesign({});
+
+    Waves.attach('.waves-start', ['waves-block']);
+    Waves.init();
+
+    $('#calendar').fullCalendar({
+        height: 'auto',
         themeSystem: 'bootstrap3',
+        columnFormat:'ddd D',
+        titleFormat: 'MMMM YYYY',
+        slotDuration: '01:00:00',
+        slotLabelFormat: 'H:mm',
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -59,18 +75,6 @@ function eventCalendar() {
         allDaySlot: false,
         bootstrapGlyphicons: false,
     });
-};
-
-function clearCalendar() {
-    $('#calendar').fullCalendar('delete'); // In case delete doesn't work.
-    $('#calendar').html('');
-};
-$(document).on('turbolinks:load', eventCalendar);
-$(document).on('turbolinks:before-cache', clearCalendar)
-
-$(document).on('turbolinks:load', function() {
-    $('body').bootstrapMaterialDesign({});
-
-    Waves.attach('.waves-start', ['waves-block']);
-    Waves.init();
 });
+
+$(document).on('turbolinks:before-cache', clearCalendar)
