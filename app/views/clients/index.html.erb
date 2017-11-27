@@ -12,6 +12,8 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
+    <th>Tariff</th>
+    <th>Pending hours</th>
     <th colspan="1"></th>
   </tr>
   </thead>
@@ -20,6 +22,8 @@
     <tr>
       <td><%= client %></td>
       <td><%= client.email %></td>
+      <td><%= client.tariff %></td>
+      <td><%= client.events.where(billed: nil).map{ |e| ((e.end - e.start) / 1.hour).round}.reduce(:+) %></td>
       <td class="right-align">
         <div class="btn-group">
           <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -54,8 +54,8 @@ $(document).on('turbolinks:load', function() {
                 type: "POST",
                 dataType: "json",
                 data: { "event": {
-                        title: "test",
-                        description: "ciao",
+                        title: "testTitle",
+                        description: "testDescription",
                         client_id: client_id,
                         start: start.toString(),
                         end: end.toString()
@@ -65,6 +65,8 @@ $(document).on('turbolinks:load', function() {
                     console.log(response);
                     $('#calendar').fullCalendar('renderEvent', response, true);
                     $('#calendar').fullCalendar('unselect');
+                    var element = document.getElementById("bill_button");
+                    element.classList.remove("disabled");
                 }
             });
 
@@ -74,6 +76,11 @@ $(document).on('turbolinks:load', function() {
         eventBackgroundColor: '#00838f',
         allDaySlot: false,
         bootstrapGlyphicons: false,
+        eventRender: function(event, element) {
+            if(event.billed == null) {
+                element.css('background-color', '#757575');
+            }
+        },
     });
 });
 

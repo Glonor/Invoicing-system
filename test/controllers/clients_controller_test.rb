@@ -21,7 +21,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should create client" do
     log_in_as(@user)
     assert_difference('Client.count') do
-      post clients_url, params: { client: { email: @client.email, first_name: @client.first_name, last_name: @client.last_name, user_id: @client.user_id } }
+      post clients_url, params: { client: { email: @client.email, first_name: @client.first_name, last_name: @client.last_name, tariff: @client.tariff, user_id: @client.user_id } }
     end
 
     assert_redirected_to client_url(Client.last)

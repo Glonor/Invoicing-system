@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="card material-table">
+  <div class="card-body">
+    <p>
+      <strong>Client:</strong>
+      <%= @invoice.client %>
+    </p>
+
+    <p>
+      <strong>Issue date:</strong>
+      <%= @invoice.issue_date %>
+    </p>
+
+    <p>
+      <strong>Total amount:</strong>
+      <%= @invoice.total_amount %>
+    </p>
+    <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+    <%= link_to 'Back', invoices_path %>
+    <%= link_to "PDF", invoice_path(@invoice, format: 'pdf') %>
+  </div>
+  <table class="table" id="dttb">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @invoice.services.each do |service| %>
+      <tr>
+        <td><%= service.title %></td>
+        <td><%= service.description %></td>
+        <td><%= service.start_time %></td>
+        <td><%= service.end_time %></td>
+        <td><%= service.amount %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

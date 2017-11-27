@@ -68,3 +68,8 @@ gem 'rails-assets-bootstrap-material-design', '~> 4.0.0.beta.4', source: 'https:
 gem 'waves-js-rails', '~> 0.7.5'
 gem 'momentjs-rails'
 gem 'fullcalendar.io-rails'
+gem 'css-class-string'
+gem 'prawn'
+gem 'prawn-table'
+gem 'responders'
+

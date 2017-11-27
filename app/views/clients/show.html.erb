@@ -4,16 +4,27 @@
     <div class="col-md-3 mb-3">
       <%= @client %>
     </div>
-    <div class=col-md3 mb-3">
+    <div class="col-md3 mb-3">
     <%= @client.email %>
   </div>
+    <div class="col-md-3 mb-3">
+      <%= @client.tariff %>
+    </div>
 </div>
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+  <%= link_to "Bill", bill_client_path(@client), :remote => true, method: :post,
+              class: "btn btn-primary #{'disabled' if !@client.events.where(billed: nil).any?}",
+              id:"bill_button"%>
+
 
 <script type="text/javascript">
-    var client_id = <%= params[:id] %>;
+    var client_id = null;
+    client_id = <%= params[:id] %>;
     var url = '/clients/' + client_id + '/events.json';
+    $('#bill_button').on('click', function() {
+        $(this).addClass('disabled');
+    })
 </script>
 <div id="calendar"></div>
 </div>

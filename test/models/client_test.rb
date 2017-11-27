@@ -3,7 +3,7 @@ require 'test_helper'
 class ClientTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    @client = @user.clients.build(first_name: "Mario", last_name: "Rossi", email:"mario.rossi@example.com")
+    @client = @user.clients.build(first_name: "Mario", last_name: "Rossi", email:"mario.rossi@example.com", tariff: 10)
   end
 
   test "should be valid" do

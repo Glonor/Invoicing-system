@@ -32,6 +32,7 @@ users = User.order(:created_at).take(6)
   users.each do |user|
     user.clients.create!(first_name:  first_name,
                          last_name: last_name,
+                         tariff: 10,
                          email: email)
   end
 end

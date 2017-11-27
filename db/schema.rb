@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114155742) do
+ActiveRecord::Schema.define(version: 20171127124249) do
 
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20171114155742) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "tariff", precision: 20, scale: 4
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
@@ -32,6 +33,29 @@ ActiveRecord::Schema.define(version: 20171114155742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_events_on_client_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "client_id"
+    t.datetime "issue_date"
+    t.decimal "total_amount", precision: 20, scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_invoices_on_client_id"
+    t.index ["user_id"], name: "index_invoices_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.integer "invoice_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.decimal "amount", precision: 20, scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.text "description"
+    t.index ["invoice_id"], name: "index_services_on_invoice_id"
   end
 
   create_table "users", force: :cascade do |t|
