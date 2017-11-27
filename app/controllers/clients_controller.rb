@@ -85,8 +85,11 @@ class ClientsController < ApplicationController
 
       respond_to do |format|
         if invoice.save
+          flash[:success] = 'Invoice was successfully created.'
+          format.html { redirect_to invoice}
           format.json { render :show, status: :created, location: invoice }
         else
+          format.html { render :new }
           format.json { render json: invoice.errors, status: :unprocessable_entity }
         end
       end

@@ -17,9 +17,7 @@
       <strong>Total amount:</strong>
       <%= @invoice.total_amount %>
     </p>
-    <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-    <%= link_to 'Back', invoices_path %>
-    <%= link_to "PDF", invoice_path(@invoice, format: 'pdf') %>
+    <%= link_to "PDF", invoice_path(@invoice, format: 'pdf'), class:"btn btn-danger" %>
   </div>
   <table class="table" id="dttb">
     <thead>

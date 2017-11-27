@@ -43,7 +43,7 @@ $(document).on('turbolinks:load', function() {
         header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'month,agendaWeek,agendaDay'
+            right: 'month,agendaWeek'
         },
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
@@ -71,16 +71,75 @@ $(document).on('turbolinks:load', function() {
             });
 
         },
+        editable: true,
+        eventOverlap: false,
+        eventResize: function(event, delta, revertFunc) {
+            if(!event.billed) {
+                $.ajax({
+                    type: "PATCH",
+                    dataType: "json",
+                    data: {
+                        "event": {
+                            start: event.start.toString(),
+                            end: event.end.toString()
+                        }
+                    },
+                    url: '/clients/' + event.client_id + '/events/' + event.id + '.json',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function() {
+                        revertFunc();
+                    }
+                });
+            }
+            else{
+                revertFunc();
+            }
+
+
+        },
+        eventDrop: function(event, delta, revertFunc) {
+            if(!event.billed) {
+                $.ajax({
+                    type: "PATCH",
+                    dataType: "json",
+                    data: {
+                        "event": {
+                            start: event.start.toString(),
+                            end: event.end.toString()
+                        }
+                    },
+                    url: '/clients/' + event.client_id + '/events/' + event.id + '.json',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function() {
+                        revertFunc();
+                    }
+                });
+            }else{
+                revertFunc();
+            }
+        },
         eventLimit: true, // allow "more" link when too many events
         events: url,
         eventBackgroundColor: '#00838f',
         allDaySlot: false,
+        selectOverlap: false,
         bootstrapGlyphicons: false,
         eventRender: function(event, element) {
             if(event.billed == null) {
-                element.css('background-color', '#757575');
+                element.css('background-color', '#d84315');
             }
         },
+        eventClick: function(event) {
+            $('#modalTitle').html(event.title);
+            $('#modalBody').html(event.description);
+            $('#eventUrl').attr('href',event.url);
+            $('#fullCalModal').modal();
+            return false;
+        }
     });
 });
 

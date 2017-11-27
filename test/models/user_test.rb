@@ -75,7 +75,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated clients should be destroyed" do
     @user.save
-    @user.clients.create!(first_name: "Mario", last_name: "Rossi", email:"mario.rossi@example.com")
+    @user.clients.create!(first_name: "Mario", last_name: "Rossi", tariff: 10, email:"mario.rossi@example.com")
     assert_difference 'Client.count', -1 do
       @user.destroy
     end

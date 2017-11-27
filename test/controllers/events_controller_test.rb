@@ -20,8 +20,6 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Event.count') do
       post client_events_path(@client), params: { event: { billed: @event.billed, client_id: @event.client_id, description: @event.description, end: @event.end, start: @event.start, title: @event.title } }
     end
-
-    assert_redirected_to client_event_path(@client, Event.last)
   end
 
   test "should show event" do
@@ -30,20 +28,15 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get edit_client_events_path(@client, @event)
+    get edit_client_event_path(@client, @event)
     assert_response :success
-  end
-
-  test "should update event" do
-    patch client_event_path(@client, @event), params: { event: { billed: @event.billed, client_id: @event.client_id, description: @event.description, end: @event.end, start: @event.start, title: @event.title } }
-    assert_redirected_to client_event_path(@client, @event)
   end
 
   test "should destroy event" do
     assert_difference('Event.count', -1) do
-      delete event_url(@event)
+      delete client_event_path(@client, @event)
     end
 
-    assert_redirected_to client_events_path(@client)
+    assert_redirected_to @client
   end
 end

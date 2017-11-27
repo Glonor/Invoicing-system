@@ -29,10 +29,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to client_event_path(@client, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: client_event_url(@client, @event) }
       else
-        format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
@@ -43,8 +41,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to client_event_path(@client, @event), notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+        format.json { render :show, status: :ok, location: client_event_url(@client, @event) }
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -57,7 +54,8 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to @client, notice: 'Event was successfully destroyed.' }
+      flash[:success] = 'Event was successfully destroyed.'
+      format.html { redirect_to @client }
       format.json { head :no_content }
     end
   end
