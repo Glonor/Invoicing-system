@@ -1,24 +1,22 @@
-# README
+# InvoiceApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**InvoiceApp** is a ruby on rails application that makes invoices
 
-Things you may want to cover:
+* Manage your clients
+* Add hours to a specific client through calendar interface
+* Generate invoices based on the hours added before
 
-* Ruby version
 
-* System dependencies
+## Installation
 
-* Configuration
+rails db:migrate
 
-* Database creation
+rails db:seed
 
-* Database initialization
+## Usage
 
-* How to run the test suite
+Admin can manage simple users
 
-* Services (job queues, cache servers, search engines, etc.)
+Email: admin@example.com
 
-* Deployment instructions
-
-* ...
+Passowrd: password
