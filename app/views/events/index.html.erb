@@ -21,8 +21,8 @@
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.billed %></td>
-        <td><%= event.start %></td>
-        <td><%= event.end %></td>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
         <td><%= event.client %></td>
         <td><%= link_to 'Show', client_event_path(event.client, event) %></td>
         <td><%= link_to 'Edit', edit_client_event_path(event.client, event) %></td>

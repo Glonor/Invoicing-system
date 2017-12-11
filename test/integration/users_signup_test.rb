@@ -8,7 +8,13 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          last_name: "",
                                          email: "user@invalid",
                                          password:              "foo",
-                                         password_confirmation: "bar" } }
+                                         password_confirmation: "bar",
+                                         fiscal_code: "Fiscal Code",
+                                         address: "Address",
+                                         city: "City",
+                                         district: "District",
+                                         postal_code: "Postal Code",
+                                         phone: "Phone"} }
     end
     assert_template 'users/new'
   end
@@ -20,7 +26,13 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          last_name: "Surname",
                                          email: "user@example.com",
                                          password: "password",
-                                         password_confirmation: "password" } }
+                                         password_confirmation: "password",
+                                         fiscal_code: "Fiscal Code",
+                                         address: "Address",
+                                         city: "City",
+                                         district: "District",
+                                         postal_code: "Postal Code",
+                                         phone: "Phone"} }
     end
     follow_redirect!
     assert_template 'users/show'

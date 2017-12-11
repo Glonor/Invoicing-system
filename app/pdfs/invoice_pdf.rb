@@ -1,4 +1,5 @@
 include ActionView::Helpers::NumberHelper
+include ApplicationHelper
 class InvoicePdf < Prawn::Document
   def initialize(invoice, view)
     super(top_margin: 70)
@@ -26,7 +27,7 @@ class InvoicePdf < Prawn::Document
   def line_item_rows
     [["Title", "Description", "Start time", "End time", "Price"]] +
         @invoice.services.map do |item|
-          [item.title, item.description, item.start_time.to_s, item.end_time.to_s, price(item.amount)]
+          [item.title, item.description, date_formatter(item.start_time), date_formatter(item.end_time), price(item.amount)]
         end
   end
 

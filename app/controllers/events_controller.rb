@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_client
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -29,7 +30,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.json { render :show, status: :created, location: client_event_url(@client, @event) }
+        format.json { render :show, status: :created, location: @events }
       else
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -41,9 +42,8 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.json { render :show, status: :ok, location: client_event_url(@client, @event) }
+        format.json { render json: { status: "ok", message: "Success!" } }
       else
-        format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +72,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :billed, :start, :end, :client_id)
+      params.require(:event).permit(:title, :description, :billed, :start_time, :end_time, :client_id)
     end
 end

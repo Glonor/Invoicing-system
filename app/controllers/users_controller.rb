@@ -4,12 +4,11 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
-    @clients = @user.clients.paginate(page: params[:page])
   end
 
   def new
@@ -51,7 +50,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :fiscal_code,
+                                 :address,
+                                 :city,
+                                 :district,
+                                 :postal_code,
+                                 :phone)
   end
 
   # Confirms the correct user.

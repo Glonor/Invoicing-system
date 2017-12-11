@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127124249) do
+ActiveRecord::Schema.define(version: 20171204200352) do
 
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20171127124249) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "tariff", precision: 20, scale: 4
+    t.string "fiscal_code", limit: 16
+    t.string "address"
+    t.string "city"
+    t.string "district"
+    t.string "postal_code"
+    t.string "phone"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
@@ -27,8 +33,8 @@ ActiveRecord::Schema.define(version: 20171127124249) do
     t.string "title"
     t.text "description"
     t.boolean "billed"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,6 +72,12 @@ ActiveRecord::Schema.define(version: 20171127124249) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.string "fiscal_code", limit: 16
+    t.string "address"
+    t.string "city"
+    t.string "district"
+    t.string "postal_code"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

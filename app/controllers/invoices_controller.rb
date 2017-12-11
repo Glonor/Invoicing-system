@@ -1,10 +1,11 @@
 class InvoicesController < ApplicationController
+  before_action :logged_in_user
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = current_user.invoices
   end
 
   # GET /invoices/1

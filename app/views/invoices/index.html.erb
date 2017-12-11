@@ -18,8 +18,8 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.client %></td>
-        <td><%= invoice.issue_date %></td>
-        <td><%= invoice.total_amount %></td>
+        <td><%= date_formatter invoice.issue_date %></td>
+        <td><%= number_to_currency invoice.total_amount %></td>
         <td class="right-align">
           <div class="btn-group">
             <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

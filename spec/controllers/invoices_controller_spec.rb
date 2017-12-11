@@ -25,26 +25,34 @@ require 'rails_helper'
 
 RSpec.describe InvoicesController, type: :controller do
 
+  let(:client) { FactoryBot.create(:client)}
+  let(:user) {FactoryBot.create(:user)}
+
+  before(:each) do
+    log_in_as(user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Invoice. As you add validations to Invoice, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+  let(:valid_attributes) { {
+      :user_id => user.id,
+      :client_id => client.id,
+      :issue_date => "2017-11-26 11:02:23",
+      :total_amount => "9.99"
+    }
   }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+  let(:invalid_attributes) { {
+      :issue_date => "2017-11-26 11:02:23",
+      :total_amount => "9.99"
+    }
   }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # InvoicesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
       invoice = Invoice.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :index, params: {}
       expect(response).to be_success
     end
   end
@@ -52,14 +60,14 @@ RSpec.describe InvoicesController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       invoice = Invoice.create! valid_attributes
-      get :show, params: {id: invoice.to_param}, session: valid_session
+      get :show, params: {id: invoice.to_param}
       expect(response).to be_success
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
-      get :new, params: {}, session: valid_session
+      get :new, params: {}
       expect(response).to be_success
     end
   end
@@ -67,7 +75,7 @@ RSpec.describe InvoicesController, type: :controller do
   describe "GET #edit" do
     it "returns a success response" do
       invoice = Invoice.create! valid_attributes
-      get :edit, params: {id: invoice.to_param}, session: valid_session
+      get :edit, params: {id: invoice.to_param}
       expect(response).to be_success
     end
   end
@@ -76,48 +84,19 @@ RSpec.describe InvoicesController, type: :controller do
     context "with valid params" do
       it "creates a new Invoice" do
         expect {
-          post :create, params: {invoice: valid_attributes}, session: valid_session
+          post :create, params: {invoice: valid_attributes}
         }.to change(Invoice, :count).by(1)
       end
 
       it "redirects to the created invoice" do
-        post :create, params: {invoice: valid_attributes}, session: valid_session
+        post :create, params: {invoice: valid_attributes}
         expect(response).to redirect_to(Invoice.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {invoice: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested invoice" do
-        invoice = Invoice.create! valid_attributes
-        put :update, params: {id: invoice.to_param, invoice: new_attributes}, session: valid_session
-        invoice.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the invoice" do
-        invoice = Invoice.create! valid_attributes
-        put :update, params: {id: invoice.to_param, invoice: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(invoice)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        invoice = Invoice.create! valid_attributes
-        put :update, params: {id: invoice.to_param, invoice: invalid_attributes}, session: valid_session
+        post :create, params: {invoice: invalid_attributes}
         expect(response).to be_success
       end
     end
@@ -127,13 +106,13 @@ RSpec.describe InvoicesController, type: :controller do
     it "destroys the requested invoice" do
       invoice = Invoice.create! valid_attributes
       expect {
-        delete :destroy, params: {id: invoice.to_param}, session: valid_session
+        delete :destroy, params: {id: invoice.to_param}
       }.to change(Invoice, :count).by(-1)
     end
 
     it "redirects to the invoices list" do
       invoice = Invoice.create! valid_attributes
-      delete :destroy, params: {id: invoice.to_param}, session: valid_session
+      delete :destroy, params: {id: invoice.to_param}
       expect(response).to redirect_to(invoices_url)
     end
   end

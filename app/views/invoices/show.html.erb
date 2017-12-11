@@ -10,12 +10,12 @@
 
     <p>
       <strong>Issue date:</strong>
-      <%= @invoice.issue_date %>
+      <%= date_formatter @invoice.issue_date %>
     </p>
 
     <p>
       <strong>Total amount:</strong>
-      <%= @invoice.total_amount %>
+      <%= number_to_currency(@invoice.total_amount) %>
     </p>
     <%= link_to "PDF", invoice_path(@invoice, format: 'pdf'), class:"btn btn-danger" %>
   </div>
@@ -34,9 +34,9 @@
       <tr>
         <td><%= service.title %></td>
         <td><%= service.description %></td>
-        <td><%= service.start_time %></td>
-        <td><%= service.end_time %></td>
-        <td><%= service.amount %></td>
+        <td><%= date_formatter service.start_time %></td>
+        <td><%= date_formatter service.end_time %></td>
+        <td><%= number_to_currency(service.amount) %></td>
       </tr>
     <% end %>
     </tbody>

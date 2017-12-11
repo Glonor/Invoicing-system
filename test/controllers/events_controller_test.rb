@@ -4,6 +4,8 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @event = events(:one)
     @client = clients(:one)
+    @user = users(:michael)
+    log_in_as(@user)
   end
 
   test "should get index" do
@@ -18,7 +20,9 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create event" do
     assert_difference('Event.count') do
-      post client_events_path(@client), params: { event: { billed: @event.billed, client_id: @event.client_id, description: @event.description, end: @event.end, start: @event.start, title: @event.title } }
+      post client_events_path(@client), params: { event: { billed: @event.billed, client_id: @event.client_id,
+                                                           description: @event.description, end_time: @event.end_time,
+                                                           start_time: @event.start_time, title: @event.title } }
     end
   end
 

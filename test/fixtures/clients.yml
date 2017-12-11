@@ -6,6 +6,12 @@ one:
   email: MyString@example.com
   tariff: 10
   user: michael
+  fiscal_code: 0123456789AQWEDS
+  address: MyString
+  city: MyString
+  district: MyString
+  postal_code: MyString
+  phone: MyString
 
 two:
   first_name: MyString
@@ -13,6 +19,12 @@ two:
   email: MyString@example.com
   tariff: 10
   user: jacob
+  fiscal_code: 0123456789AQWEDS
+  address: MyString
+  city: MyString
+  district: MyString
+  postal_code: MyString
+  phone: MyString
 
 <% 30.times do |n| %>
 user_<%= n %>:
@@ -21,4 +33,10 @@ user_<%= n %>:
   email: <%= "user-#{n}@example.com" %>
   tariff: 10
   user: michael
+  fiscal_code: 0123456789AQWEDS
+  address: MyString
+  city: MyString
+  district: MyString
+  postal_code: MyString
+  phone: MyString
 <% end %>

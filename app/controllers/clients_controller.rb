@@ -73,9 +73,9 @@ class ClientsController < ApplicationController
       invoice = Invoice.new(user: current_user, client: @client)
 
       @client.events.where(billed: nil).each do |e|
-        amount = ((e.end - e.start) / 1.hour).round * @client.tariff
-        invoice.services.build(title: e.title, description: e.description, start_time: e.start,
-                               end_time: e.end, amount: amount)
+        amount = ((e.end_time - e.start_time) / 1.hour).round * @client.tariff
+        invoice.services.build(title: e.title, description: e.description, start_time: e.start_time,
+                               end_time: e.end_time, amount: amount)
         total_amount += amount
         e.update(billed: true)
       end
@@ -104,7 +104,12 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :last_name, :email, :tariff, :user_id)
+      params.require(:client).permit(:first_name, :last_name, :email, :tariff, :user_id, :fiscal_code,
+                                     :address,
+                                     :city,
+                                     :district,
+                                     :postal_code,
+                                     :phone)
     end
   end
 

@@ -29,6 +29,21 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+#custom
+gem 'rails-controller-testing'
+gem 'faker'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.12.3'
+gem 'bootstrap_form'
+gem 'rails-assets-bootstrap-material-design', '~> 4.0.0.beta.4', source: 'https://rails-assets.org'
+gem 'waves-js-rails', '~> 0.7.5'
+gem 'momentjs-rails'
+gem 'fullcalendar.io-rails'
+gem 'css-class-string'
+gem 'prawn'
+gem 'prawn-table'
+gem 'responders'
+gem 'simplecov'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -57,19 +72,5 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#custom
-gem 'rails-controller-testing'
-gem 'faker'
-gem 'will_paginate'
-gem 'jquery-rails'
-gem 'popper_js', '~> 1.12.3'
-gem 'bootstrap_form'
-gem 'rails-assets-bootstrap-material-design', '~> 4.0.0.beta.4', source: 'https://rails-assets.org'
-gem 'waves-js-rails', '~> 0.7.5'
-gem 'momentjs-rails'
-gem 'fullcalendar.io-rails'
-gem 'css-class-string'
-gem 'prawn'
-gem 'prawn-table'
-gem 'responders'
+
 

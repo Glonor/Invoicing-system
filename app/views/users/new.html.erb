@@ -5,6 +5,12 @@
     <%= f.email_field :email, label_class: "bmd-label-floating" %>
     <%= f.password_field :password, label_class: "bmd-label-floating"%>
     <%= f.password_field :password_confirmation, label_class: "bmd-label-floating" %>
+    <%= f.text_field :fiscal_code, label_class: "bmd-label-floating" %>
+    <%= f.text_field :address, label_class: "bmd-label-floating" %>
+    <%= f.text_field :city, label_class: "bmd-label-floating" %>
+    <%= f.text_field :district, label_class: "bmd-label-floating" %>
+    <%= f.text_field :postal_code, label_class: "bmd-label-floating" %>
+    <%= f.phone_field :phone, label_class: "bmd-label-floating" %>
 
     <button class= "btn btn-raised btn-primary btn-lg btn-block" id="btn-submit" type="submit">Sign up</button>
   <% end %>

@@ -50,15 +50,17 @@ $(document).on('turbolinks:load', function() {
         selectHelper: true,
         defaultView: 'agendaWeek',
         select: function(start, end) {
+            var title = prompt("Please enter title event");
+            var description = prompt("Please enter description");
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 data: { "event": {
-                        title: "testTitle",
-                        description: "testDescription",
+                        title: title,
+                        description: description,
                         client_id: client_id,
-                        start: start.toString(),
-                        end: end.toString()
+                        start_time: start.toString(),
+                        end_time: end.toString()
                     }},
                 url: url,
                 success: function(response){
@@ -80,8 +82,8 @@ $(document).on('turbolinks:load', function() {
                     dataType: "json",
                     data: {
                         "event": {
-                            start: event.start.toString(),
-                            end: event.end.toString()
+                            start_time: event.start.toString(),
+                            end_time: event.end.toString()
                         }
                     },
                     url: '/clients/' + event.client_id + '/events/' + event.id + '.json',
@@ -106,8 +108,8 @@ $(document).on('turbolinks:load', function() {
                     dataType: "json",
                     data: {
                         "event": {
-                            start: event.start.toString(),
-                            end: event.end.toString()
+                            start_time: event.start.toString(),
+                            end_time: event.end.toString()
                         }
                     },
                     url: '/clients/' + event.client_id + '/events/' + event.id + '.json',
@@ -124,13 +126,13 @@ $(document).on('turbolinks:load', function() {
         },
         eventLimit: true, // allow "more" link when too many events
         events: url,
-        eventBackgroundColor: '#00838f',
+        eventBackgroundColor: '#d84315',
         allDaySlot: false,
         selectOverlap: false,
         bootstrapGlyphicons: false,
         eventRender: function(event, element) {
             if(event.billed == null) {
-                element.css('background-color', '#d84315');
+                element.css('background-color', '#00838f');
             }
         },
         eventClick: function(event) {

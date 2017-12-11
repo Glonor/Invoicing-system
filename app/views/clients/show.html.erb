@@ -9,11 +9,11 @@
         <%= @client.email %>
       </div>
       <div class="col-md-3 mb-3">
-        <%= @client.tariff %>
+        <%= number_to_currency @client.tariff %>
       </div>
       <div class="col-md-3 mb-3">
         <%= link_to "Bill", bill_client_path(@client), method: :post,
-                    class: "btn btn-raised btn-warning #{'disabled' if !@client.events.where(billed: nil).any?}",
+                    class: "btn btn-raised btn-primary #{'disabled' if !@client.events.where(billed: nil).any?}",
                     id:"bill_button"%>
       </div>
     </div>

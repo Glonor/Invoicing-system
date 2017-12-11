@@ -2,7 +2,7 @@
 <div class="table-header">
   <h5>Clients</h5>
   <div class="actions" data-turbolinks="false">
-    <%= link_to new_client_path, class:"btn bmd-btn-icon" do %>
+    <%= link_to new_client_path, class:"btn bmd-btn-icon", name:"new client" do %>
       <i class="material-icons">person_add</i>
       <% end %>
   </div>
@@ -22,8 +22,8 @@
     <tr>
       <td><%= client %></td>
       <td><%= client.email %></td>
-      <td><%= client.tariff %></td>
-      <td><%= client.events.where(billed: nil).map{ |e| ((e.end - e.start) / 1.hour).round}.reduce(:+) %></td>
+      <td><%= number_to_currency client.tariff %></td>
+      <td><%= client.events.where(billed: nil).map{ |e| ((e.end_time - e.start_time) / 1.hour).round}.reduce(:+) %></td>
       <td class="right-align">
         <div class="btn-group">
           <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="ex3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

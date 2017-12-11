@@ -1,13 +1,54 @@
 <div class="card material-table">
-<div class="card-body ">
-  <div class="col-md-8">
-    <% if @user.clients.any? %>
-      <h3>Clients (<%= @user.clients.count %>)</h3>
-      <ol class="clients">
-        <%= render @clients %>
-      </ol>
-      <%= will_paginate @clients %>
-    <% end %>
+<div class="card-body "> <div class="row">
+  <div class="col-md-3 mb-3">
+    <h5>User informations</h5>
   </div>
+  <div class="col-md-8">
+    <p>
+      <strong>First name:</strong>
+      <%= @user.first_name %>
+    </p>
+
+    <p>
+      <strong>Last name:</strong>
+      <%= @user.last_name %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
+
+    <p>
+      <strong>Fiscal code:</strong>
+      <%= @user.fiscal_code %>
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      <%= @user.address %>
+    </p>
+
+    <p>
+      <strong>City:</strong>
+      <%= @user.city %>
+    </p>
+
+    <p>
+      <strong>District:</strong>
+      <%= @user.district %>
+    </p>
+
+    <p>
+      <strong>Postal code:</strong>
+      <%= @user.postal_code %>
+    </p>
+
+    <p>
+      <strong>Phone:</strong>
+      <%= @user.phone %>
+    </p>
+  </div>
+</div>
 </div>
 </div>

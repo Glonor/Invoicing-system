@@ -3,7 +3,12 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(first_name: "Kane", last_name: "Smith", email:"kane.smith@example.com",
-                     password: "provaprova", password_confirmation: "provaprova")
+                     password: "provaprova", password_confirmation: "provaprova", fiscal_code: "0123456789AQWEDS",
+                     address: "Address",
+                     city: "City",
+                     district: "District",
+                     postal_code: "Postal Code",
+                     phone: "Phone")
   end
 
   test "should be valid" do
@@ -75,7 +80,13 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated clients should be destroyed" do
     @user.save
-    @user.clients.create!(first_name: "Mario", last_name: "Rossi", tariff: 10, email:"mario.rossi@example.com")
+    @user.clients.create!(first_name: "Mario", last_name: "Rossi", tariff: 10, email:"mario.rossi@example.com",
+                          fiscal_code: "0123456789AQWEDS",
+                          address: "Address",
+                          city: "City",
+                          district: "District",
+                          postal_code: "Postal Code",
+                          phone: "Phone")
     assert_difference 'Client.count', -1 do
       @user.destroy
     end
