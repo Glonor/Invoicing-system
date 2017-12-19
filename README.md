@@ -24,12 +24,10 @@ Passowrd: password
 
 
 ## License
-InvoiceApp is distribuited under the terms of the MIT License.
-
-See [LICENSE](LICENSE) for datails.
+InvoiceApp is distribuited under the terms of the [MIT License](LICENSE).
 
 #### Models
-![Models](doc/models_complete.svg)
+![Models](doc/models_complete.png)
 
 
 
