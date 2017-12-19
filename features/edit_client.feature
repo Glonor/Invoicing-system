@@ -1,6 +1,7 @@
 Feature: editing client profile
   As a user
   I want to edit clients
+
   Background:
     Given I have a user
     Given I have a client
@@ -16,8 +17,14 @@ Feature: editing client profile
     Then I should be on client profile page
     And I should see a flash message indicating "Client was successfully updated."
 
-  Scenario: editing profile fields with wrong data
+  Scenario: editing client profile fields with wrong data
     Given I go to the edit client profile page
     When I fill in invalid client fiscal code
     And I click on "Save changes"
-    Then I should have a fiscal code validation error
+    Then I should have a "is the wrong length" validation error
+
+  Scenario: editing client profile fields with empty data
+    Given I go to the edit client profile page
+    When I fill in empty client fiscal code
+    And I click on "Save changes"
+    Then I should have a "can't be blank" validation error

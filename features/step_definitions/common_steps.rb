@@ -2,6 +2,10 @@ Given("I have a user") do
   @user = FactoryBot.create(:user)
 end
 
+Given("I have a client") do
+  @client = FactoryBot.create(:client, user: @user)
+end
+
 When("I go to the login page") do
   visit login_path
 end
@@ -20,5 +24,9 @@ Then("I should be on my profile page") do
 end
 
 Then("I should see a flash message indicating {string}") do |string|
+  expect(page).to have_content(string)
+end
+
+Then("I should have a {string} validation error") do |string|
   expect(page).to have_content(string)
 end

@@ -13,7 +13,7 @@ Feature: new client
     When I go to the clients page
     And I click on new client icon
     And I am redirected to the new client page
-    And I fill in the new client form
+    And I fill in valid new client data
     And I click on "Create client"
     Then I should be on client profile page
 
@@ -21,6 +21,14 @@ Feature: new client
     When I go to the clients page
     And I click on new client icon
     And I am redirected to the new client page
-    And I fill in with empty first_name
+    And I fill in invalid new client fiscal code
     And I click on "Create client"
-    Then I should have a validation error
+    Then I should have a "is the wrong length" validation error
+
+  Scenario: user fills in empty data
+    When I go to the clients page
+    And I click on new client icon
+    And I am redirected to the new client page
+    And I fill in empty new client fiscal code
+    And I click on "Create client"
+    Then I should have a "can't be blank" validation error

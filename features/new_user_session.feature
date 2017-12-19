@@ -13,8 +13,9 @@ Feature: new user session
   Scenario: user fills in bogus data - server side validation
     When I go to the login page
     And I fill in invalid password
+    And I click on "Sign in"
     Then I should have a invalid combination error
 
   Scenario: user tries to access page without login
-    When I go to the client index page
+    When I go to the clients page
     Then I should see a flash message indicating "Please log in."

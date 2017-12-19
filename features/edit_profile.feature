@@ -18,6 +18,12 @@ Feature: editing your profile
 
   Scenario: editing profile fields with wrong data
     Given I go to the edit profile page
-    When I fill in invalid fiscal code
+    When I fill in invalid user fiscal code
     And I click on "Save changes"
-    Then I should have a fiscal code validation error
+    Then I should have a "is the wrong length" validation error
+
+  Scenario: editing profile fields with empty data
+    Given I go to the edit profile page
+    When I fill in empty user fiscal code
+    And I click on "Save changes"
+    Then I should have a "can't be blank" validation error
