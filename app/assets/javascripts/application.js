@@ -26,7 +26,6 @@ function clearCalendar() {
     $('#calendar').html('');
 };
 
-
 $(document).on('turbolinks:load', function() {
     $('body').bootstrapMaterialDesign({});
 

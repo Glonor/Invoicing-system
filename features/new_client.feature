@@ -1,4 +1,6 @@
 Feature: new client
+  As a user
+  I want to add new clients
 
   Background:
     Given I have a user

@@ -1,4 +1,6 @@
 Feature: editing your profile
+  As a user
+  I want to edit my profile
 
   Background:
     Given I have a user
@@ -12,4 +14,10 @@ Feature: editing your profile
     When I fill in valid user data
     And I click on "Save changes"
     Then I should be on my profile page
-    And I should see a flash message indicating success updating
+    And I should see a flash message indicating "Profile updated"
+
+  Scenario: editing profile fields with wrong data
+    Given I go to the edit profile page
+    When I fill in invalid fiscal code
+    And I click on "Save changes"
+    Then I should have a fiscal code validation error

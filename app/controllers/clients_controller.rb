@@ -70,29 +70,22 @@ class ClientsController < ApplicationController
     if @client.events.where(billed: nil).any?
       total_amount = 0
 
-      invoice = Invoice.new(user: current_user, client: @client)
+      @invoice = Invoice.new(user: current_user, client: @client)
 
       @client.events.where(billed: nil).each do |e|
         amount = ((e.end_time - e.start_time) / 1.hour).round * @client.tariff
-        invoice.services.build(title: e.title, description: e.description, start_time: e.start_time,
+        @invoice.services.build(title: e.title, description: e.description, start_time: e.start_time,
                                end_time: e.end_time, amount: amount)
         total_amount += amount
         e.update(billed: true)
       end
 
-      invoice.total_amount = total_amount
-      invoice.issue_date = Time.now
+      @invoice.total_amount = total_amount
+      @invoice.issue_date = Time.now
 
-      respond_to do |format|
-        if invoice.save
-          flash[:success] = 'Invoice was successfully created.'
-          format.html { redirect_to invoice}
-          format.json { render :show, status: :created, location: invoice }
-        else
-          format.html { render :new }
-          format.json { render json: invoice.errors, status: :unprocessable_entity }
-        end
-      end
+      @invoice.save
+      flash[:success] = 'Invoice was successfully created.'
+      redirect_to @invoice
       end
   end
 

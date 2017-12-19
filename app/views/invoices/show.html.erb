@@ -18,6 +18,7 @@
       <%= number_to_currency(@invoice.total_amount) %>
     </p>
     <%= link_to "PDF", invoice_path(@invoice, format: 'pdf'), class:"btn btn-danger" %>
+    <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
   </div>
   <table class="table" id="dttb">
     <thead>

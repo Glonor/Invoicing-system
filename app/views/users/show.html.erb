@@ -49,6 +49,9 @@
       <%= @user.phone %>
     </p>
   </div>
+  <% unless @user.admin? %>
+    <%= link_to "Delete", @user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-primary" %>
+  <% end %>
 </div>
 </div>
 </div>

@@ -23,6 +23,7 @@
     <div class="row">
       <%= link_to 'Edit', edit_client_path(@client), class:"btn btn-primary"  %>
       <%= link_to 'Back', clients_path, class:"btn btn-primary" %>
+      <%= link_to 'Delete', @client, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary" %>
     </div>
   </div>
 </div>

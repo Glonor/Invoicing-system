@@ -18,3 +18,7 @@ end
 Then("I should be on my profile page") do
   expect(page).to have_content('User informations')
 end
+
+Then("I should see a flash message indicating {string}") do |string|
+  expect(page).to have_content(string)
+end

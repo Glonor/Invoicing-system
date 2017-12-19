@@ -1,4 +1,6 @@
 Feature: bill the unbilled hours to a specific client with an invoice
+  As a user
+  I want to bill the unbilled hours to a client with an invoice
 
   Background:
     Given I have a user
@@ -14,3 +16,4 @@ Feature: bill the unbilled hours to a specific client with an invoice
     When I click on "Bill"
     And an invoice is created to the client
     Then I should see the list of the client's billing total
+    And I click on "PDF"
